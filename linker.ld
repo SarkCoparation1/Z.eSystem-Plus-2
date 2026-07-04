@@ -2,10 +2,25 @@ ENTRY(kernel_main)
 SECTIONS
 {
     . = 0x1000;
+
     .text : {
         *(.text)
+        *(.text.*)
     }
-    .rodata : { *(.rodata) }
-    .data   : { *(.data) }
-    .bss    : { *(.bss) }
+
+    .rodata : {
+        *(.rodata)
+        *(.rodata.*)
+    }
+
+    .data : {
+        *(.data)
+        *(.data.*)
+    }
+
+    .bss : {
+        *(.bss)
+        *(.bss.*)
+        *(COMMON)
+    }
 }
